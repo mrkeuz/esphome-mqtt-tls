@@ -1,0 +1,36 @@
+<<: !include ./secrets.yaml
+
+esphome:
+  name: mqtt-tls-sample
+
+esp32:
+  board: esp32doit-devkit-v1
+  framework:
+    type: esp-idf
+    version: recommended
+
+wifi:
+  ssid: ${wifi_name}
+  password: ${wifi_password}
+
+# Enable logging
+logger:
+  level: DEBUG
+  logs:
+    sensor.component: INFO
+
+mqtt:
+  broker: test.mosquitto.org
+  port: 8883
+  discovery: true
+  skip_cert_cn_check: false
+  idf_send_async: false
+  # Exported from test.mosquitto.org
+  certificate_authority: !include ISRG_root_x1.pem
+
+binary_sensor:
+  - platform: gpio
+    pin: GPIO17
+    name: "Test Motion"
+    device_class: motion
+

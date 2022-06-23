@@ -6,9 +6,7 @@ Installation
 
 ## Setup
 
-- Choose platform and board in `secrets.yaml`
-  (see https://esphome.io/components/esphome.html#configuration-variables)
-- Copy `secrets.yaml.sample` to `secrets.yaml`
+- Create `secrets.yaml` from `secrets.yaml.sample` 
   
 ## Compile and run
 ```shell

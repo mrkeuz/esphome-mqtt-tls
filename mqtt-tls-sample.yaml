@@ -25,6 +25,17 @@ mqtt:
   discovery: true
   skip_cert_cn_check: false
   idf_send_async: false
+  
+  ###################################################################
+  # To get key from another server:
+  #
+  # $ openssl s_client -showcerts -verify 10 -connect mqtt.example.com:8883 < /dev/null
+  #
+  # Cert should depth=MAX - mean root cert in chain, with long live max life.
+  # Because i.e. let's encrypt certs are short-lived (~3 months)
+  #
+  # See also: https://esphome.io/components/mqtt.html#mqtt-tls-idf
+  ####################################################################
   # Downloaded from official side test.mosquitto.org:
   # Cert link: https://test.mosquitto.org/ssl/mosquitto.org.crt
   certificate_authority: |
